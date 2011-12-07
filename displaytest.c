@@ -1,5 +1,6 @@
 #include "displaythread.h"
 
+#include <stdlib.h>
 #include <string.h>
 
 const uint8_t testpattern[PIXELS] =
@@ -18,5 +19,7 @@ int main(int argc, char * argv[]) {
    memcpy(test.data, testpattern, sizeof(testpattern));
 
    displayupdate(&test, 1);
+
+   return EXIT_SUCCESS;
 }
 
