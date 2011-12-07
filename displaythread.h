@@ -12,7 +12,7 @@ typedef struct struct_led_display {
 	uint8_t data[PIXELS];
 } led_display;
 
-
+void displayupdate(led_display * display, int level);
 
 #endif
 
