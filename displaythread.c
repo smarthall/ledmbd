@@ -3,9 +3,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <pthread.h>
-#include <usb.h>
+#include <hid.h>
 
-#define PIXEL(X,Y,display) display->data[(X) + ((Y) * (X_SIZE))]
+// USB constants
+#define VENDOR 0x1d34
+#define PRODUCT 0x0013
+
+// Get the pixels from the display
+#define PIXEL(X,Y,display) (display)->data[(X) + ((Y) * (X_SIZE))]
+
+typedef struct struct_ledscreen {
+    HIDInterface *hid;
+    led_display *buffer;
+} ledscreen;
+
 
 void displayupdate(led_display * display, int level) {
     int x, y;
@@ -13,9 +24,9 @@ void displayupdate(led_display * display, int level) {
     for (y = 0; y < Y_SIZE; y++) {
         for (x = 0; x < X_SIZE; x++) {
             if (PIXEL(x,y,display) >= level) {
-                 printf("1");
-            } else {
                  printf("0");
+            } else {
+                 printf(".");
             }
         }
         printf("\n");
