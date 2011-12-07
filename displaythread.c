@@ -26,7 +26,7 @@ void displayupdate(led_display * display, int level) {
             if (PIXEL(x,y,display) >= level) {
                  printf("0");
             } else {
-                 printf(".");
+                 printf("~");
             }
         }
         printf("\n");
