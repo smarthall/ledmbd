@@ -17,7 +17,6 @@ typedef struct struct_ledscreen {
     led_display *buffer;
 } ledscreen;
 
-
 void displayupdate(led_display * display, int level) {
     int x, y;
 
